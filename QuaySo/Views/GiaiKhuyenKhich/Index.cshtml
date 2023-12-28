@@ -1,0 +1,272 @@
+﻿@{
+    QuaySo.Models.QuaySoEntities db = new QuaySo.Models.QuaySoEntities();
+}
+@model QuaySo.Models.GiaiThuong
+<style>
+    .quaylai {
+        font-size: 25PX !important
+    }
+</style>
+
+<div class="row " id="giaiThuongDiv" v-cloak>
+    <div class="bg"></div>
+    <div class="col-12" style="padding:0;">
+        <div class="card" style="background:unset;height:100%;opacity:1;z-index:9999;color:white" id="Divquay">
+            <div class="card-header" style="border:1px solid red">
+                <h5>
+                    <span> Kết quả quay thưởng   <b id="sogiaidaquay" style="font-size:22px;color:#FFF;text-shadow: 0 0 5px #060607">{{DaQuay}}/{{SoLuong}}</b></span>
+                    @{
+                        Html.RenderAction("dsGiaiThuong", "Home");
+                    }
+                </h5>
+            </div>
+
+            <div class="card-body" style="padding:20px;">
+                <div class="row">
+                    <div class="col-4" style="padding:0;">
+                        <div class="container-fluid">
+                            <div class="row" id="dsnguoinhangiai">
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-8" id="colgiaithuong">
+                        <div class="row">
+                            <div class="col-4" style="margin:0;padding:0;">
+                                <div class="timer_wrap">
+                                    <div class="countdownHolder">
+                                        <span id="loaigiai" data-soluongdaquay="0" class="label label-danger">{{GiaiThuong.NAME}}</span>
+                                        <div style="width:100%;padding:0px;" class="countDays">
+                                            <span id="randomnumber" class="digit static">{{SoTrung.N3}}{{SoTrung.N4}}</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div @@click="StartQuay" style="width:100%;margin:0 auto;text-align:center;" id="nutbamtemp" v-if="GiaiThuong.ID!=0 && Run==false && DaQuay < SoLuong">
+                                    <label class="wow pulse nutbam" data-wow-iteration="infinite" data-wow-duration="1500ms" id="getit" data-stt="0" style="opacity:1 !important; position:relative;z-index:99999"></label>
+                                </div>
+
+                            </div>
+                            <div class="col-8" style="width:100%;display: table-cell; vertical-align: middle  ;display: inline-block;">
+
+                                <p class="TenPhanThuong">@Model.TenPhanThuong</p>
+                                <p class="GiaTri">@Model.GiaTri</p>
+                                <img id="imagegiaithuong" src="@Model.Image" style="width:100%!important ; margin: 0 auto" />
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="form-group" id="Divbangketqua" style="margin-top:-20px;display:none;">
+            <table id="tblgiaithuong" style="color:#f3f3f3;" class="table table-bordered"></table>
+        </div>
+
+    </div>
+</div>
+
+<script>
+      
+
+    var app = new Vue({
+        el: '#giaiThuongDiv',
+        data: {
+            GiaiThuong: {
+                NAME: "",
+                ID: 0
+            },
+            SoTrung: {
+
+                N3: 0,
+                N4: 0,
+            },
+            DaQuay: "",
+            SoLuong: "",
+            Run: false
+        },
+        methods: {
+            StartQuay: function (event) {
+
+                if (app.SoLuong <= app.DaQuay) {
+                    return;
+                }
+                if (app.GiaiThuong.ID == 0) {
+                    Thongbao('Vui lòng chọn giải');
+                    return;
+                }
+             
+                var NumRun = 40;
+                var nguoitrungGiai = QuayGiai();
+                if (nguoitrungGiai == "") {
+                    app.StartQuay();
+                    return;
+                }
+                app.Run = true;
+                var x = setInterval(function () {
+                    app.SoTrung.N3 = nguoitrungGiai.substring(0, 1);
+                    app.SoTrung.N4 = nguoitrungGiai.substring(1, 2);
+
+
+                    if (NumRun > 20) {
+                        app.SoTrung.N3 = getRandom();
+                    }
+                    if (NumRun > 1) {
+                        app.SoTrung.N4 = getRandom();
+                    }
+
+                    NumRun--;
+                    if (NumRun == 0) {
+                        clearInterval(x);
+                        ThemNguoiTrungGiai(nguoitrungGiai, app.GiaiThuong.ID);
+                        setTimeout(function () {
+                            app.StartQuay()
+                        }, 500);
+
+                    }
+                }, 1);
+
+            },
+        }
+    })
+
+    function getRandom() {
+        return Math.floor(Math.random() * 10);
+    }
+
+
+
+
+    $(document).on("click", ".quaylai", function () {
+        var code = $(this).attr("data-CODE");
+        var r = confirm("Anh chị có chắc chắn muốn quay lại : " + $(this).text());
+        if (r == true) {
+            $.ajax({
+                type: "POST",
+                url: "/home/quaylai",
+                dataType: "json",
+                data: {
+                    code: code
+                },
+                success: function (response) {
+                    HienThiDanhSachNguoiTrungGiai();
+                    HienThiToanBoNguoiTrungGiai();
+                }
+            });
+        }
+
+    });
+
+    function Thongbao(msg) {
+        alert(msg);
+    }
+
+
+    function ThemNguoiTrungGiai(Staff, ID_GIAI) {
+        $.ajax({
+            type: "POST",
+            url: "/HOME/ThemNguoiTrungGiai",
+            data: {
+                Staff: Staff,
+                ID_GIAI: ID_GIAI
+            },
+            dataType: "json",
+            success: function (response) {
+                // sau khi thêm xong người trúng giải thì hiển thị lại danh sách
+                HienThiDanhSachNguoiTrungGiai();
+                app.Run = false;
+            }
+        });
+    }
+    function QuayGiai() {
+        var nguoitrungGiai = "";
+        $.ajax({
+            type: "POST",
+            url: "/GiaiKhuyenKhich/QuayGiai",
+            async: false,
+            data: {
+                ID_GiaiThuong: app.GiaiThuong.ID
+
+            },
+            dataType: "json",
+            success: function (response) {
+                nguoitrungGiai = response;
+
+            }
+        });
+        return nguoitrungGiai;
+    }
+
+
+    function HienThiDanhSachNguoiTrungGiai() {
+        HienThiNumKetQua();
+        $('#dsnguoinhangiai').load("/GiaiKhuyenKhich/DsTrungGiai?ID_GiaiThuong=" + app.GiaiThuong.ID);
+    }
+
+
+    function HienThiToanBoNguoiTrungGiai() {
+        $('#Divbangketqua').load("/GiaiKhuyenKhich/HienThiToanBoNguoiTrungGiai");
+    }
+    function HienThiNumKetQua() {
+
+        $.ajax({
+            type: "POST",
+            url: "/GiaiKhuyenKhich/NumKetQua",
+            async: false,
+            dataType: "json",
+            data: {
+                ID_GiaiThuong: app.GiaiThuong.ID
+
+            },
+            success: function (response) {
+                app.SoLuong = response.SoLuong;
+                app.DaQuay = response.DaQuay;
+            }
+        });
+    }
+
+    $('#showall').click(function () {
+        $('#Divquay').css('display', 'none');
+        $('#Divbangketqua').css('display', '');
+    })
+
+    $('#hideall').click(function () {
+        $('#Divquay').css('display', '');
+        $('#Divbangketqua').css('display', 'none');
+    })
+
+    if (location.hash != null && location.hash != "") {
+        $(location.hash).click();
+    }
+
+
+    $('.giai').removeClass('giaiactive');
+        $('#giaikhuyenkhich').addClass('giaiactive');
+         app.GiaiThuong.NAME =  $('#giaikhuyenkhich').text();
+        app.GiaiThuong.ID =  $('#giaikhuyenkhich').attr("data-ID");
+    HienThiDanhSachNguoiTrungGiai();
+
+
+</script>
+
+<script src="~/Scripts/jquery.signalR-2.4.1.min.js"></script>
+<script src="/signalr/hubs"></script>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        var chat = $.connection.chatHub;
+        // Create a function that the hub can call to broadcast messages.
+        chat.client.broadcastMessage = function (name) {
+            $('#nutbamtemp').click();
+        };
+
+        $.connection.hub.start().done(function () {
+
+        });
+    });
+    $.connection.hub.disconnected(function () {
+        setTimeout(function () {
+            $.connection.hub.start();
+        }, 5000); // Restart connection after 5 seconds.
+    });
+</script>

@@ -1,0 +1,72 @@
+﻿@model IEnumerable<QuaySo.Models.GiaiThuong>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div style="background-color:#fff">
+
+
+    <h2>Danh sách giải thưởng</h2>
+
+    <p>
+        <a class="btn btn-primary" href="/GiaiThuongs/Create">Thêm giải</a>
+    </p>
+    <table class="table table-hover">
+        <tr>
+            <th>
+                Tên giải
+            </th>
+            <th>
+                Số lượng
+            </th>
+
+
+            <th>
+                Tên phần thưởng
+            </th>
+            <th>
+                Gía trị giải thưởng
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TenGiai)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SoLuong)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.TenPhanThuong)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.GiaTri)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
+                    @if (item.ProcessDefault == 0)
+                    {
+                        <text>
+                            @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+
+                        </text>
+                    }
+
+
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>
+<script>
+    $(document).ready(function () {
+        $('#showmarquee').hide();
+    });
+</script>

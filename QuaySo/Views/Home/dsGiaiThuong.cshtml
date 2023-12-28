@@ -1,0 +1,17 @@
+﻿@model IEnumerable<QuaySo.Models.GiaiThuong>
+    @{ 
+        QuaySo.Models.QuaySoEntities db = new QuaySo.Models.QuaySoEntities();
+        var kk = db.GiaiThuongs.Where(v => v.ID == 5).FirstOrDefault();
+    }
+<a href="/GiaiThuongs/create" class="btn btn-outline-warning float-right btn-sm giai" title="Thêm giải"><i class="fa fa-plus-square-o"></i></a>
+<a href="/GiaiKhuyenKhich/Index#giaikhuyenkhich" id="giaikhuyenkhich" class="btn btn-outline-warning float-right btn-sm  " style="    background-color: rgba(0, 0, 0, 0.65)  ;" data-ID="@kk.ID" data-image="@kk.Image" data-TenPhanThuong="@kk.TenPhanThuong" data-GiaTri="@kk.GiaTri">@kk.TenGiai</a>
+
+<span style="float:right;" id="listgiai">
+
+
+    @foreach (var item in Model.OrderBy(z => z.STT))
+    {
+        <a id="giai_@item.ID" href="/home/index#giai_@item.ID" class="btn btn-outline-warning btn-sm giai" data-ID="@item.ID" data-image="@item.Image" data-TenPhanThuong="@item.TenPhanThuong" data-GiaTri="@item.GiaTri">@item.TenGiai</a>
+    }
+</span>
+

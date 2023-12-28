@@ -1,0 +1,17 @@
+﻿@model IEnumerable<QuaySo.Models.TrungGiai>
+
+
+@foreach (var item in Model)
+{
+    string btnactived = item.Code == Model.FirstOrDefault().Code ? "btnactived" : "";
+    <DIV class="col-md-12">
+        <span data-CODE="@item.Code" class="btn btn-success btn-lg col-md-12  @btnactived quaylai">@item.Code @(!string.IsNullOrEmpty(item.Name) ? "-" : "") @item.Name</span>
+    </DIV>
+}
+
+<style>
+    .btnactived
+    {
+        font-size:40PX
+    }
+</style>

@@ -1,0 +1,114 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>CÔNG TY RORZE ROBOTECH VIỆT NAM</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="keywords" content="CÔNG TY RORZE ROBOTECH VIỆT NAM" />
+    <link rel="icon" href="~/Content/QuaySoTrungThuong/logo.png" type="image/x-icon">
+
+    <!-- Latest compiled and minified CSS -->
+    <link href="~/Content/QuaySoTrungThuong/wow/css/site.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="~/Content/QuaySoTrungThuong/css/style.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="~/Content/QuaySoTrungThuong/css/bootstrap.min.css" rel="stylesheet" type="text/css" media="all" />
+     <link href="~/Content/font-awesome.min.css" rel="stylesheet" />
+    <link href="~/Content/QuaySoTrungThuong/wow/css/libs/animate.css" rel="stylesheet" type="text/css" media="all" />
+    <link rel="stylesheet" href="~/Content/QuaySoTrungThuong/css/jquery.countdown.css" />
+    <link rel="stylesheet" href="~/Content/QuaySoTrungThuong/css/jquery-sakura.min.css" />
+    <script src="~/Scripts/jquery-3.3.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="~/Content/QuaySoTrungThuong/wow/dist/wow.js"></script>
+    <script src="~/Content/QuaySoTrungThuong/js/bootstrap.min.js"></script>
+    <script src="~/Content/QuaySoTrungThuong/js/main.js"></script>
+    <script src="~/Content/QuaySoTrungThuong/js/xteam_fireworks.min.js"></script>
+    <script src="~/Content/QuaySoTrungThuong/js/jquery-sakura.min.js"></script>
+
+    <link href="~/Content/Site.css" rel="stylesheet" />
+
+</head>
+<body>
+    <img id="hoadaobentrai" src="~/Content/QuaySoTrungThuong/images/img-before-head.png" />
+    <img id="hoadaobenphai" src="~/Content/QuaySoTrungThuong/images/img-after-head.png" />
+    <!--background-->
+    <canvas style="z-index: -99;position: absolute; display:block;width:90%;" id="phaohoa"></canvas>
+   
+
+    <div class="bg agile">
+        <div class="container-fluid">
+            <div style="margin:0 auto;text-align:center;color:white;">
+                 <div id="head_logo">
+                     <a href="/" class="text-white">
+                         <h1>
+                             <img src="~/Content/QuaySoTrungThuong/logo.png" />
+                             CÔNG TY TNHH RORZE ROBOTECH
+                         </h1>
+                     </a>
+                </div>
+
+                <h1 id="tenchhuongtrinh">CHƯƠNG TRÌNH QUAY THƯỞNG</h1>
+            </div>
+
+            @RenderBody()
+
+        </div>
+
+    </div>
+
+    <button id="clearall" class="btn btn-outline-danger" style="position:fixed;top:5px;right:5px;border-radius:50%;z-index:9999999">
+        <i class="fa fa-times"></i>
+    </button>
+
+    <button id="showall" class="btn btn-outline-warning" style="position:fixed;bottom:5px;right:5px;border-radius:50%;z-index:9999999">
+        <i class="fa fa-book"></i>
+    </button>
+
+    <button id="hideall" class="btn btn-outline-danger" style="position:fixed;bottom:50px;right:5px;border-radius:50%;z-index:9999999">
+        <i class="fa fa-minus"></i>
+    </button>
+
+    <div class="modal fade" id="myModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" style="float:left"><b>Thông báo</b></h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body" id="noidungthongbao">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div id="showmarquee" class="navbar-fixed-bottom" style="font-size:30px; position:absolute; bottom:0; width:100%; height:50px; color:yellow;background:rgba(128, 128, 128, 0.73);">
+        <marquee style="font-weight:bold;">Chào mừng các bạn đã đến với buổi tiệc GALA DINNER <i style="color:#fff!important;font-style:italic!important">"BÊN NHAU TRỌN NIỀM VUI"</i> 2019 của công ty Roze Robotech!</marquee>
+    </div>
+
+     
+
+ 
+ 
+    <script>
+        $("#clearall").click(function (e) {
+            var person = prompt("Anh chị có chắc chắn xóa hết dữ liệu đã quay! Nhập mật khẩu để xác nhận", "");
+
+            if (person =="RRC") {
+                $.ajax({
+                    type: "POST",
+                    url: "/home/clearall",
+                     dataType: "json",
+                    success: function (response) {
+                        window.location.reload();
+                    }
+                });
+             }
+            e.preventDefault();
+
+        });
+    </script>
+</body>
+
+</html>

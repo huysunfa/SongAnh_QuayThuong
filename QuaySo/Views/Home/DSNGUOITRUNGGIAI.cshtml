@@ -1,0 +1,48 @@
+﻿@model IEnumerable<QuaySo.Models.NGUOITRUNGGIAI>
+
+@{
+    ViewBag.Title = "DSNGUOITRUNGGIAI";
+}
+
+<div style="background-color:#fff">
+    <h2>Danh sách người trúng giải</h2>
+
+    <table class="table">
+        <tr class="bg-info text-white">
+            <th>
+                Mã code
+            </th>
+            <th>
+                Tên nhân viên
+            </th>
+            <th>
+                Giải thưởng
+            </th>
+
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.code)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TenGiai)
+                </td>
+
+
+            </tr>
+        }
+
+    </table>
+</div>
+
+<script>
+    $(document).ready(function () {
+        $('#showmarquee').hide();
+    });
+</script>

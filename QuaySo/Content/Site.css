@@ -1,0 +1,40 @@
+﻿.TenPhanThuong, .GiaTri {
+    color: yellow;
+    background: #f00;
+      font-size: 35px;
+      margin-bottom:0;
+      border-radius:10PX;
+      text-align:center!important;
+      margin-bottom:10px
+}
+.form-group {
+    margin-bottom: 2PX;
+}
+.GiaTri   {
+      font-size: 40px;
+ }
+
+.GiaTri {
+    -webkit-animation: play 0.9s steps(10) infinite;
+    -moz-animation: play 0.9s steps(10) infinite;
+    -ms-animation: play 0.9s steps(10) infinite;
+    -o-animation: play 0.9s steps(10) infinite;
+    animation: play 0.9s steps(10) infinite;
+}
+
+@keyframes play {
+
+
+    25% {
+        color: yellow;
+        background-color:red
+    }
+
+    75% {
+        color: blue;
+        background-color:white
+    }
+}
+#colgiaithuong img {
+    border: 10px solid red;
+}

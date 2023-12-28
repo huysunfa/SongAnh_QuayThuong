@@ -1,0 +1,21 @@
+﻿@model IEnumerable<QuaySo.Models.TrungGiai>
+    @{ 
+        QuaySo.Models.QuaySoEntities db = new QuaySo.Models.QuaySoEntities();
+    }
+<table id="tblgiaithuong" style="color:#f3f3f3;" class="table table-bordered">
+    @foreach (var item in db.GiaiThuongs.Where(v=>v.SoLuong>0).OrderBy(z=>z.ID))
+    {
+        <tr>
+            <th    class="giai" style="width:10%;">@item.TenGiai <img src="@item.Image"></th>
+            <td id="giai_4" style=" text-align:center;">
+                @foreach (var it in Model.Where(v => v.ID_GiaiThuong == item.ID).OrderBy(z => z.DateCreate))
+                {
+                    string btnactived = it.Code == Model.FirstOrDefault().Code ? "btnactived" : "";
+                <button type="button" class="btn btn-success @btnactived btn-sm quaylai" data-CODE="@it.Code" style="margin:5px;">@it.Code  @(!string.IsNullOrEmpty(it.Name) ? "-" : "") @it.Name</button>
+                }
+
+            </td>
+        </tr>
+    }
+</table>
+<a class="bg-white" href="/Home/DSNGUOITRUNGGIAI">Danh sách người trúng giải</a>

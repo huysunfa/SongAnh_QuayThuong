@@ -1,0 +1,33 @@
+﻿@{
+    Layout = null;
+}
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+<script src="~/Scripts/jquery-3.3.1.min.js"></script>
+<script src="~/Scripts/jquery.signalR-2.4.1.min.js"></script>
+<script src="signalr/hubs"></script>
+<link href="~/Content/QuaySoTrungThuong/css/font-awesome.min.css" rel="stylesheet" type="text/css" media="all">
+<link href="~/Content/QuaySoTrungThuong/wow/css/site.css" rel="stylesheet" type="text/css" media="all" />
+<link href="~/Content/QuaySoTrungThuong/css/style.css" rel="stylesheet" type="text/css" media="all" />
+<link href="~/Content/QuaySoTrungThuong/css/bootstrap.min.css" rel="stylesheet" type="text/css" media="all" />
+<div id="sendmessage" style="width:100%;margin:0 auto;text-align:center ">
+    <label class="wow pulse nutbam" data-wow-iteration="infinite" data-wow-duration="1500ms" id="getit" data-stt="0" style="opacity:1 !important; position:relative;z-index:99999"></label>
+</div>
+<style>
+    .nutbam{
+        width:100%!important;
+       height:100%!important;
+    }
+</style>
+<script type="text/javascript">
+    $(function () {
+        // Declare a proxy to reference the hub.
+        var chat = $.connection.chatHub;
+
+        $.connection.hub.start().done(function () {
+            $('#sendmessage').click(function () {
+                // Call the Send method on the hub.
+                chat.server.send("asdasd");
+            });
+        });
+    });
+</script>
