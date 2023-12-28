@@ -197,7 +197,6 @@
     <Content Include="Content\font-awesome.css" />
     <Content Include="Content\font-awesome.min.css" />
     <Content Include="Content\QuaySoTrungThuong\button.png" />
-    <Content Include="Content\QuaySoTrungThuong\buttonactive.png" />
     <Content Include="Content\QuaySoTrungThuong\css\bootstrap-theme.css" />
     <Content Include="Content\QuaySoTrungThuong\css\bootstrap-theme.min.css" />
     <Content Include="Content\QuaySoTrungThuong\css\bootstrap.css" />
@@ -221,10 +220,8 @@
     <Content Include="Content\QuaySoTrungThuong\js\xteam_fireworks.min.js" />
     <Content Include="Content\QuaySoTrungThuong\logo.png" />
     <Content Include="Content\QuaySoTrungThuong\Mjolnir.png" />
-    <Content Include="Content\QuaySoTrungThuong\Mjolnir2.png" />
     <Content Include="Content\QuaySoTrungThuong\sld_imgbg1.jpg" />
     <Content Include="Content\QuaySoTrungThuong\sld_imgbg1122.jpg" />
-    <Content Include="Content\QuaySoTrungThuong\sld_imgbg13.jpg" />
     <Content Include="Content\QuaySoTrungThuong\sld_imgbg21.jpg" />
     <Content Include="Content\QuaySoTrungThuong\wow\css\libs\animate.css" />
     <Content Include="Content\QuaySoTrungThuong\wow\css\site.css" />
