@@ -18,6 +18,16 @@
           <Property Name="TenPhanThuong" Type="nvarchar" MaxLength="1550" />
           <Property Name="GiaTri" Type="nvarchar" MaxLength="1550" />
         </EntityType>
+        <EntityType Name="NGUOITRUNGGIAI">
+          <Key>
+            <PropertyRef Name="code" />
+            <PropertyRef Name="id_giaithuong" />
+          </Key>
+          <Property Name="code" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="50" />
+          <Property Name="TenGiai" Type="nvarchar" MaxLength="1550" />
+          <Property Name="id_giaithuong" Type="int" Nullable="false" />
+        </EntityType>
         <EntityType Name="Staff">
           <Key>
             <PropertyRef Name="code" />
@@ -25,6 +35,7 @@
           <Property Name="code" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="name" Type="nvarchar" MaxLength="50" />
           <Property Name="dept" Type="nvarchar" MaxLength="50" />
+          <Property Name="ChucVu" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="TrungGiai">
           <Key>
@@ -37,35 +48,22 @@
           <Property Name="DateCreate" Type="datetime" Nullable="false" />
           <Property Name="Name" Type="nvarchar" MaxLength="250" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'QuaySo.dbo.NGUOITRUNGGIAI' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
-        <EntityType Name="NGUOITRUNGGIAI">
-          <Key>
-            <PropertyRef Name="code" />
-            <PropertyRef Name="id_giaithuong" />
-          </Key>
-          <Property Name="code" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="name" Type="nvarchar" MaxLength="50" />
-          <Property Name="TenGiai" Type="nvarchar" MaxLength="1550" />
-          <Property Name="id_giaithuong" Type="int" Nullable="false" />
-        </EntityType>
         <EntityContainer Name="QuaySoModelStoreContainer">
           <EntitySet Name="GiaiThuong" EntityType="Self.GiaiThuong" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NGUOITRUNGGIAI" EntityType="Self.NGUOITRUNGGIAI" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Staff" EntityType="Self.Staff" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TrungGiai" EntityType="Self.TrungGiai" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="NGUOITRUNGGIAI" EntityType="Self.NGUOITRUNGGIAI" store:Type="Views" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [NGUOITRUNGGIAI].[code] AS [code], 
-    [NGUOITRUNGGIAI].[name] AS [name], 
-    [NGUOITRUNGGIAI].[TenGiai] AS [TenGiai], 
-    [NGUOITRUNGGIAI].[id_giaithuong] AS [id_giaithuong]
-    FROM [dbo].[NGUOITRUNGGIAI] AS [NGUOITRUNGGIAI]</DefiningQuery>
-          </EntitySet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="QuaySoModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="QuaySoEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="GiaiThuongs" EntityType="QuaySoModel.GiaiThuong" />
+          <EntitySet Name="NGUOITRUNGGIAIs" EntityType="QuaySoModel.NGUOITRUNGGIAI" />
+          <EntitySet Name="Staffs" EntityType="QuaySoModel.Staff" />
+          <EntitySet Name="TrungGiais" EntityType="QuaySoModel.TrungGiai" />
+        </EntityContainer>
         <EntityType Name="GiaiThuong">
           <Key>
             <PropertyRef Name="ID" />
@@ -79,31 +77,6 @@ warning 6002: The table/view 'QuaySo.dbo.NGUOITRUNGGIAI' does not have a primary
           <Property Name="TenPhanThuong" Type="String" MaxLength="1550" FixedLength="false" Unicode="true" />
           <Property Name="GiaTri" Type="String" MaxLength="1550" FixedLength="false" Unicode="true" />
         </EntityType>
-        <EntityType Name="Staff">
-          <Key>
-            <PropertyRef Name="code" />
-          </Key>
-          <Property Name="code" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="dept" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-        </EntityType>
-        <EntityType Name="TrungGiai">
-          <Key>
-            <PropertyRef Name="Code" />
-            <PropertyRef Name="ID_GiaiThuong" />
-          </Key>
-          <Property Name="Code" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="ID_GiaiThuong" Type="Int32" Nullable="false" />
-          <Property Name="GhiChu" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="DateCreate" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="Name" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
-        </EntityType>
-        <EntityContainer Name="QuaySoEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="GiaiThuongs" EntityType="Self.GiaiThuong" />
-          <EntitySet Name="Staffs" EntityType="Self.Staff" />
-          <EntitySet Name="TrungGiais" EntityType="Self.TrungGiai" />
-          <EntitySet Name="NGUOITRUNGGIAIs" EntityType="QuaySoModel.NGUOITRUNGGIAI" />
-        </EntityContainer>
         <EntityType Name="NGUOITRUNGGIAI">
           <Key>
             <PropertyRef Name="code" />
@@ -114,7 +87,27 @@ warning 6002: The table/view 'QuaySo.dbo.NGUOITRUNGGIAI' does not have a primary
           <Property Name="TenGiai" Type="String" MaxLength="1550" FixedLength="false" Unicode="true" />
           <Property Name="id_giaithuong" Type="Int32" Nullable="false" />
         </EntityType>
-      </Schema>
+        <EntityType Name="Staff">
+          <Key>
+            <PropertyRef Name="code" />
+          </Key>
+          <Property Name="code" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="dept" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ChucVu" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="TrungGiai">
+          <Key>
+            <PropertyRef Name="Code" />
+            <PropertyRef Name="ID_GiaiThuong" />
+          </Key>
+          <Property Name="Code" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ID_GiaiThuong" Type="Int32" Nullable="false" />
+          <Property Name="GhiChu" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DateCreate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Name" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+        </EntityType>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
@@ -126,31 +119,11 @@ warning 6002: The table/view 'QuaySo.dbo.NGUOITRUNGGIAI' does not have a primary
                 <ScalarProperty Name="GiaTri" ColumnName="GiaTri" />
                 <ScalarProperty Name="TenPhanThuong" ColumnName="TenPhanThuong" />
                 <ScalarProperty Name="ProcessDefault" ColumnName="ProcessDefault" />
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="TenGiai" ColumnName="TenGiai" />
-                <ScalarProperty Name="SoLuong" ColumnName="SoLuong" />
-                <ScalarProperty Name="Image" ColumnName="Image" />
                 <ScalarProperty Name="STT" ColumnName="STT" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Staffs">
-            <EntityTypeMapping TypeName="QuaySoModel.Staff">
-              <MappingFragment StoreEntitySet="Staff">
-                <ScalarProperty Name="code" ColumnName="code" />
-                <ScalarProperty Name="name" ColumnName="name" />
-                <ScalarProperty Name="dept" ColumnName="dept" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="TrungGiais">
-            <EntityTypeMapping TypeName="QuaySoModel.TrungGiai">
-              <MappingFragment StoreEntitySet="TrungGiai">
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="DateCreate" ColumnName="DateCreate" />
-                <ScalarProperty Name="Code" ColumnName="Code" />
-                <ScalarProperty Name="ID_GiaiThuong" ColumnName="ID_GiaiThuong" />
-                <ScalarProperty Name="GhiChu" ColumnName="GhiChu" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="SoLuong" ColumnName="SoLuong" />
+                <ScalarProperty Name="TenGiai" ColumnName="TenGiai" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -161,6 +134,27 @@ warning 6002: The table/view 'QuaySo.dbo.NGUOITRUNGGIAI' does not have a primary
                 <ScalarProperty Name="TenGiai" ColumnName="TenGiai" />
                 <ScalarProperty Name="name" ColumnName="name" />
                 <ScalarProperty Name="code" ColumnName="code" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Staffs">
+            <EntityTypeMapping TypeName="QuaySoModel.Staff">
+              <MappingFragment StoreEntitySet="Staff">
+                <ScalarProperty Name="ChucVu" ColumnName="ChucVu" />
+                <ScalarProperty Name="dept" ColumnName="dept" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="code" ColumnName="code" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TrungGiais">
+            <EntityTypeMapping TypeName="QuaySoModel.TrungGiai">
+              <MappingFragment StoreEntitySet="TrungGiai">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="DateCreate" ColumnName="DateCreate" />
+                <ScalarProperty Name="GhiChu" ColumnName="GhiChu" />
+                <ScalarProperty Name="ID_GiaiThuong" ColumnName="ID_GiaiThuong" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

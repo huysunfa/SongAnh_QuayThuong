@@ -17,5 +17,6 @@ namespace QuaySo.Models
         public string code { get; set; }
         public string name { get; set; }
         public string dept { get; set; }
+        public string ChucVu { get; set; }
     }
 }

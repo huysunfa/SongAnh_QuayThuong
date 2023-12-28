@@ -126,13 +126,7 @@ p {
 .countSeconds:last-child {
     border-right: 1px dotted rgba(255, 255, 255, 0.84);
 }
-.timer_wrap {
-    width: 100%;
-    margin: 0 auto;
-    box-sizing: border-box;
-    margin-bottom: 200px;
-    margin-top:100px;
-}
+ 
 .points {
 	float: left;
 	width:40px;
@@ -656,8 +650,7 @@ canvas {
 }
 
 #randomnumber {
-    font-size: 200px;
-    top: 0px;
+     top: 0px;
     opacity: 1;
     position: inherit;
     color: yellow;
@@ -672,11 +665,14 @@ canvas {
         vertical-align: middle;
         margin-top: 30px;
     }
-#head_logo img {
-    width: 300px;
-    height: auto;
-    margin-right: 50px;
-}
+    #head_logo img {
+        BORDER-RADIUS: 10PX;
+        width: 140px;
+        background-color: white;
+        height: auto;
+        margin-right: 50px;
+        padding: 0 7px;
+    }
 #colgiaithuong{
     /*min-height:1000px;*/
 }
@@ -686,16 +682,10 @@ canvas {
         min-height: 500px;
     }
 
-    .timer_wrap {
-        width: 100%;
-        margin: 0 auto;
-        box-sizing: border-box;
-        margin-bottom: 50px;
-        padding-bottom: 50px;
-    }
+ 
 
     #randomnumber {
-        font-size: 130px;
+        font-size: 70px;
         top: 0px;
         opacity: 1;
         position: inherit;
@@ -758,8 +748,8 @@ canvas {
     background-repeat: no-repeat;
     cursor: pointer;
     background-size: contain;
-    width: 200px;
-    height: 200px;
+    width: 400px;
+    height: 400px;
     cursor: url('../Mjolnir.png'),auto;
 }
     .nutbam:active {
@@ -828,13 +818,13 @@ canvas {
 #loaigiai {
     font-weight: bold;
     font-size: 30px;
-    background: red;
+    background: #4a69ac;
     width: 100%;
     display: block;
     border-bottom-left-radius: inherit;
     border-bottom-right-radius: inherit;
-    text-align:center;
-    padding:10px;
+    text-align: center;
+    padding: 20px;
 }
 .btn-group-lg > .btn, .btn-lg {
     font-size: 1.5rem ;
@@ -887,13 +877,7 @@ canvas {
         font-size: 0.85rem !important;
         margin:5px;
     }
-    #randomnumber {
-        font-size: 125px;
-        top: 0px;
-        opacity: 1;
-        position: inherit;
-        color: yellow;
-    }
+
     .nutbam {
         background: url(../button.png);
         background-size: 103%;
@@ -901,8 +885,8 @@ canvas {
         background-repeat: no-repeat;
         cursor: pointer;
         background-size: contain;
-        width: 200px;
-        height: 200px;
+        width: 400px;
+        height: 400px;
         cursor: url('../Mjolnir.png'),auto;
     }
         .nutbam:active {
@@ -912,28 +896,22 @@ canvas {
             background-repeat: no-repeat;
             cursor: pointer;
             background-size: contain;
-            width: 200px;
-            height: 200px;
+            width: 400px;
+            height: 400px;
             cursor: url('../Mjolnir2.png'),auto;
         }
-        .nutbamactive {
-            background: url(../buttonactive.png);
-            background-size: 103%;
-            border: none;
-            background-repeat: no-repeat;
-            cursor: pointer;
-            background-size: contain;
-            width: 200px;
-            height: 200px;
-            cursor: url('../Mjolnir2.png'),auto;
-        }
-    .timer_wrap {
-        width: 100%;
-        margin: 0 auto;
-        box-sizing: border-box;
-        margin-bottom: 50px;
-        padding-bottom: 50px;
+    .nutbamactive {
+        background: url(../buttonactive.png);
+        background-size: 103%;
+        border: none;
+        background-repeat: no-repeat;
+        cursor: pointer;
+        background-size: contain;
+        width: 400px;
+        height: 400px;
+        cursor: url('../Mjolnir2.png'),auto;
     }
+ 
 
     .goiqua{
         margin:20%;

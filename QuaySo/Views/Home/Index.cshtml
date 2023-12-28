@@ -1,6 +1,17 @@
 ﻿@{
     QuaySo.Models.QuaySoEntities db = new QuaySo.Models.QuaySoEntities();
 }
+
+<style>
+    .timer_wrap {
+        width: 100%;
+        margin: 0 auto;
+        box-sizing: border-box;
+        margin-bottom: 80px !important;
+        margin-top: 52px !important;
+    }
+    
+</style>
 <div class="row " id="giaiThuongDiv" v-cloak>
     <div class="bg"></div>
     <div class="col-12" style="padding:0;">
@@ -32,11 +43,12 @@
                                     <div class="countdownHolder">
                                         <span id="loaigiai" data-soluongdaquay="0" class="label label-danger">{{GiaiThuong.NAME}}</span>
                                         <div style="width:100%;padding:0px;" class="countDays">
-                                            <span id="randomnumber" class="digit static">{{SoTrung.N1}}{{SoTrung.N2}}{{SoTrung.N3}}{{SoTrung.N4}}</span>
+                                            <span id="randomnumber" class="digit static">{{SoTrung.N1}}{{SoTrung.N2}}{{SoTrung.N3}}{{SoTrung.N4}}{{SoTrung.N5}}</span>
                                         </div>
                                     </div>
                                 </div>
-                                <div @@click="StartQuay" style="width:100%;margin:0 auto;text-align:center;" id="nutbamtemp" v-if="GiaiThuong.ID!=0 && Run==false && DaQuay!=SoLuong">
+                                <h3 id="ThoigianChay"></h3>
+                                <div @@click="StartQuay" style="width:100%;text-align:center;" id="nutbamtemp" v-if="GiaiThuong.ID!=0 && Run==false && DaQuay!=SoLuong">
                                     <label class="wow pulse nutbam" data-wow-iteration="infinite" data-wow-duration="1500ms" id="getit" data-stt="0" style="opacity:1 !important; position:relative;z-index:99999"></label>
                                 </div>
 
@@ -44,7 +56,7 @@
                             <div class="col-8" style="width:100%;display: table-cell; vertical-align: middle  ;display: inline-block;">
                                 <p class="TenPhanThuong">{{GiaiThuong.TenPhanThuong}}</p>
                                 <p class="GiaTri" v-if="GiaiThuong.GiaTri!=''">{{GiaiThuong.GiaTri}}</p>
-                                <img id="imagegiaithuong" v-bind:src="GiaiThuong.image" style="width:100%!important ; margin: 0 auto" />
+                                <img id="imagegiaithuong" v-bind:src="GiaiThuong.image" style="width:500px!important ; margin: 0 auto" />
                             </div>
                         </div>
 
@@ -72,10 +84,11 @@
                 ID: 0
             },
             SoTrung: {
-                N1: 0,
-                N2: 0,
+                N1: "N",
+                N2: "V",
                 N3: 0,
                 N4: 0,
+                N5: 0,
             },
             DaQuay: "",
             SoLuong: "",
@@ -104,19 +117,22 @@
                 var x = setInterval(function () {
 
 
-                    app.SoTrung.N1 = getRandom();
-                    app.SoTrung.N2 = getRandom();
+                    app.SoTrung.N1 = "N";
+                    app.SoTrung.N2 = "V";
                     app.SoTrung.N3 = getRandom();
                     app.SoTrung.N4 = getRandom();
-
+                    app.SoTrung.N5 = getRandom();
 
 
                     NumRun--;
+                    $("#ThoigianChay").html("Đếm ngược : " + parseInt(NumRun / 10));
+
                     if (NumRun == 0) {
                         app.SoTrung.N1 = nguoitrungGiai.substring(0, 1);
                         app.SoTrung.N2 = nguoitrungGiai.substring(1, 2);
                         app.SoTrung.N3 = nguoitrungGiai.substring(2, 3);
                         app.SoTrung.N4 = nguoitrungGiai.substring(3, 4);
+                        app.SoTrung.N4 = nguoitrungGiai.substring(4, 5);
 
                         clearInterval(x);
                         ThemNguoiTrungGiai(nguoitrungGiai, app.GiaiThuong.ID);
