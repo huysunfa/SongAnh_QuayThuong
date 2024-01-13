@@ -29,16 +29,16 @@
 
             <div class="card-body" style="padding:20px;">
                 <div class="row">
-                    <div class="col-4" style="padding:0;">
+                    <div class="col-3" style="padding:0;">
                         <div class="container-fluid">
                             <div class="row" id="dsnguoinhangiai">
 
                             </div>
                         </div>
                     </div>
-                    <div class="col-8" id="colgiaithuong">
+                    <div class="col-9" id="colgiaithuong">
                         <div class="row">
-                            <div class="col-4" style="margin:0;padding:0;">
+                            <div class="col-6" style="margin:0;padding:0;">
                                 <div class="timer_wrap">
                                     <div class="countdownHolder">
                                         <span id="loaigiai" data-soluongdaquay="0" class="label label-danger">{{GiaiThuong.NAME}}</span>
@@ -47,13 +47,13 @@
                                         </div>
                                     </div>
                                 </div>
-                                <h3 id="ThoigianChay"></h3>
+                                <h2 id="ThoigianChay"></h2>
                                 <div @@click="StartQuay" style="width:100%;text-align:center;" id="nutbamtemp" v-if="GiaiThuong.ID!=0 && Run==false && DaQuay!=SoLuong">
                                     <label class="wow pulse nutbam" data-wow-iteration="infinite" data-wow-duration="1500ms" id="getit" data-stt="0" style="opacity:1 !important; position:relative;z-index:99999"></label>
                                 </div>
 
                             </div>
-                            <div class="col-8" style="width:100%;display: table-cell; vertical-align: middle  ;display: inline-block;">
+                            <div class="col-6" style="width:100%;display: table-cell; vertical-align: middle  ;display: inline-block;">
                                 <p class="TenPhanThuong">{{GiaiThuong.TenPhanThuong}}</p>
                                 <p class="GiaTri" v-if="GiaiThuong.GiaTri!=''">{{GiaiThuong.GiaTri}}</p>
                                 <img id="imagegiaithuong" v-bind:src="GiaiThuong.image" style="width:500px!important ; margin: 0 auto" />
@@ -71,7 +71,22 @@
 
     </div>
 </div>
+<script>
+    $("body").keydown(function (e) {
+        // left arrow
+        if ((e.keyCode || e.which) == 37) {
+            $('#nutbamtemp').click();
 
+ // do something
+        }
+        // right arrow
+        if ((e.keyCode || e.which) == 39) {
+            // do something
+            $('#nutbamtemp').click();
+        }
+    });
+
+</script>
 <script>
     var app = new Vue({
         el: '#giaiThuongDiv',
@@ -167,8 +182,9 @@
         app.GiaiThuong.TenPhanThuong = TenPhanThuong;
         app.GiaiThuong.GiaTri = GiaTri;
 
-        HienThiDanhSachNguoiTrungGiai();
 
+        HienThiDanhSachNguoiTrungGiai();
+ 
     });
 
     $(document).on("click", ".quaylai", function () {

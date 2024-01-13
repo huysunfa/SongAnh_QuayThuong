@@ -4,14 +4,24 @@
 @foreach (var item in Model)
 {
     string btnactived = item.Code == Model.FirstOrDefault().Code ? "btnactived" : "";
+    
     <DIV class="col-md-12">
-        <span data-CODE="@item.Code" class="btn btn-success btn-lg col-md-12  @btnactived quaylai">@item.Code @(!string.IsNullOrEmpty(item.Name) ? "-" : "") @item.Name</span>
+        <span data-CODE="@item.Code" class="btn btn-success btn-lg col-md-12   quaylai">@item.Code @(!string.IsNullOrEmpty(item.Name) ? "-" : "") @item.Name</span>
     </DIV>
+    if (btnactived== "btnactived")
+    {
+<script>
+
+            if ($("#randomnumber").text()!="00000") {
+                $("#ThoigianChay").html("<P class='btnactived'>@item.Code - @item.Name</P>");
+            }
+</script>
+    }
 }
 
 <style>
-    .btnactived
-    {
-        font-size:40PX
+    .btnactived {
+        font-size: 40PX;
+        PADDING: 20px 0;
     }
 </style>
