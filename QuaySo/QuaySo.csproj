@@ -227,6 +227,7 @@
     <Content Include="Content\QuaySoTrungThuong\wow\css\site.css" />
     <Content Include="Content\QuaySoTrungThuong\wow\dist\wow.js" />
     <Content Include="Content\QuaySoTrungThuong\wow\dist\wow.min.js" />
+    <Content Include="data giai.sql" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />

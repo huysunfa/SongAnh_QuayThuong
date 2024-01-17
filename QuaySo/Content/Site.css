@@ -1,11 +1,12 @@
 ﻿.TenPhanThuong, .GiaTri {
-    color: yellow;
-    background: #f00;
-      font-size: 35px;
-      margin-bottom:0;
-      border-radius:10PX;
-      text-align:center!important;
-      margin-bottom:10px
+    color: red;
+    background: WHITE;
+    font-size: 35px;
+    margin-bottom: 0;
+    border-radius: 10PX;
+    text-align: left !important;
+    margin-bottom: 10px;
+    display: table!important
 }
 .form-group {
     margin-bottom: 2PX;
