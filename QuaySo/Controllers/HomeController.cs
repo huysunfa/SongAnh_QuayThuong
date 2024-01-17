@@ -12,6 +12,11 @@ namespace QuaySo.Controllers
         {
             return View();
         }
+
+        public ActionResult Index34()
+        {
+            return View();
+        }
         public ActionResult DSNGUOITRUNGGIAI()
         {
             using (Models.QuaySoEntities db = new Models.QuaySoEntities())

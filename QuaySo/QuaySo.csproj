@@ -314,6 +314,7 @@
     <Content Include="Views\GiaiThuongs\Details.cshtml" />
     <Content Include="Views\GiaiThuongs\Edit.cshtml" />
     <Content Include="Views\GiaiThuongs\Index.cshtml" />
+    <Content Include="Views\Home\Index34.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
