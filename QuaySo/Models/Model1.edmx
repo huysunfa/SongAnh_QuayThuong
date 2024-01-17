@@ -48,11 +48,80 @@
           <Property Name="DateCreate" Type="datetime" Nullable="false" />
           <Property Name="Name" Type="nvarchar" MaxLength="250" />
         </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'QuaySo.dbo.TrungGiai13012024233837' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="TrungGiai13012024233837">
+          <Key>
+            <PropertyRef Name="Code" />
+            <PropertyRef Name="ID_GiaiThuong" />
+            <PropertyRef Name="DateCreate" />
+          </Key>
+          <Property Name="Code" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ID_GiaiThuong" Type="int" Nullable="false" />
+          <Property Name="GhiChu" Type="nvarchar" MaxLength="50" />
+          <Property Name="DateCreate" Type="datetime" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="250" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'QuaySo.dbo.TrungGiai13012024234939' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="TrungGiai13012024234939">
+          <Key>
+            <PropertyRef Name="Code" />
+            <PropertyRef Name="ID_GiaiThuong" />
+            <PropertyRef Name="DateCreate" />
+          </Key>
+          <Property Name="Code" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ID_GiaiThuong" Type="int" Nullable="false" />
+          <Property Name="GhiChu" Type="nvarchar" MaxLength="50" />
+          <Property Name="DateCreate" Type="datetime" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="250" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'QuaySo.dbo.TrungGiai13012024235917' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="TrungGiai13012024235917">
+          <Key>
+            <PropertyRef Name="Code" />
+            <PropertyRef Name="ID_GiaiThuong" />
+            <PropertyRef Name="DateCreate" />
+          </Key>
+          <Property Name="Code" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ID_GiaiThuong" Type="int" Nullable="false" />
+          <Property Name="GhiChu" Type="nvarchar" MaxLength="50" />
+          <Property Name="DateCreate" Type="datetime" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="250" />
+        </EntityType>
         <EntityContainer Name="QuaySoModelStoreContainer">
           <EntitySet Name="GiaiThuong" EntityType="Self.GiaiThuong" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="NGUOITRUNGGIAI" EntityType="Self.NGUOITRUNGGIAI" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Staff" EntityType="Self.Staff" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TrungGiai" EntityType="Self.TrungGiai" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TrungGiai13012024233837" EntityType="Self.TrungGiai13012024233837" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [TrungGiai13012024233837].[Code] AS [Code], 
+    [TrungGiai13012024233837].[ID_GiaiThuong] AS [ID_GiaiThuong], 
+    [TrungGiai13012024233837].[GhiChu] AS [GhiChu], 
+    [TrungGiai13012024233837].[DateCreate] AS [DateCreate], 
+    [TrungGiai13012024233837].[Name] AS [Name]
+    FROM [dbo].[TrungGiai13012024233837] AS [TrungGiai13012024233837]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="TrungGiai13012024234939" EntityType="Self.TrungGiai13012024234939" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [TrungGiai13012024234939].[Code] AS [Code], 
+    [TrungGiai13012024234939].[ID_GiaiThuong] AS [ID_GiaiThuong], 
+    [TrungGiai13012024234939].[GhiChu] AS [GhiChu], 
+    [TrungGiai13012024234939].[DateCreate] AS [DateCreate], 
+    [TrungGiai13012024234939].[Name] AS [Name]
+    FROM [dbo].[TrungGiai13012024234939] AS [TrungGiai13012024234939]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="TrungGiai13012024235917" EntityType="Self.TrungGiai13012024235917" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [TrungGiai13012024235917].[Code] AS [Code], 
+    [TrungGiai13012024235917].[ID_GiaiThuong] AS [ID_GiaiThuong], 
+    [TrungGiai13012024235917].[GhiChu] AS [GhiChu], 
+    [TrungGiai13012024235917].[DateCreate] AS [DateCreate], 
+    [TrungGiai13012024235917].[Name] AS [Name]
+    FROM [dbo].[TrungGiai13012024235917] AS [TrungGiai13012024235917]</DefiningQuery>
+          </EntitySet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
@@ -63,6 +132,9 @@
           <EntitySet Name="NGUOITRUNGGIAIs" EntityType="QuaySoModel.NGUOITRUNGGIAI" />
           <EntitySet Name="Staffs" EntityType="QuaySoModel.Staff" />
           <EntitySet Name="TrungGiais" EntityType="QuaySoModel.TrungGiai" />
+          <EntitySet Name="TrungGiai13012024233837" EntityType="QuaySoModel.TrungGiai13012024233837" />
+          <EntitySet Name="TrungGiai13012024234939" EntityType="QuaySoModel.TrungGiai13012024234939" />
+          <EntitySet Name="TrungGiai13012024235917" EntityType="QuaySoModel.TrungGiai13012024235917" />
         </EntityContainer>
         <EntityType Name="GiaiThuong">
           <Key>
@@ -100,6 +172,42 @@
           <Key>
             <PropertyRef Name="Code" />
             <PropertyRef Name="ID_GiaiThuong" />
+          </Key>
+          <Property Name="Code" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ID_GiaiThuong" Type="Int32" Nullable="false" />
+          <Property Name="GhiChu" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DateCreate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Name" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="TrungGiai13012024233837">
+          <Key>
+            <PropertyRef Name="Code" />
+            <PropertyRef Name="ID_GiaiThuong" />
+            <PropertyRef Name="DateCreate" />
+          </Key>
+          <Property Name="Code" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ID_GiaiThuong" Type="Int32" Nullable="false" />
+          <Property Name="GhiChu" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DateCreate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Name" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="TrungGiai13012024234939">
+          <Key>
+            <PropertyRef Name="Code" />
+            <PropertyRef Name="ID_GiaiThuong" />
+            <PropertyRef Name="DateCreate" />
+          </Key>
+          <Property Name="Code" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ID_GiaiThuong" Type="Int32" Nullable="false" />
+          <Property Name="GhiChu" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DateCreate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Name" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="TrungGiai13012024235917">
+          <Key>
+            <PropertyRef Name="Code" />
+            <PropertyRef Name="ID_GiaiThuong" />
+            <PropertyRef Name="DateCreate" />
           </Key>
           <Property Name="Code" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="ID_GiaiThuong" Type="Int32" Nullable="false" />
@@ -150,6 +258,39 @@
           <EntitySetMapping Name="TrungGiais">
             <EntityTypeMapping TypeName="QuaySoModel.TrungGiai">
               <MappingFragment StoreEntitySet="TrungGiai">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="DateCreate" ColumnName="DateCreate" />
+                <ScalarProperty Name="GhiChu" ColumnName="GhiChu" />
+                <ScalarProperty Name="ID_GiaiThuong" ColumnName="ID_GiaiThuong" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TrungGiai13012024233837">
+            <EntityTypeMapping TypeName="QuaySoModel.TrungGiai13012024233837">
+              <MappingFragment StoreEntitySet="TrungGiai13012024233837">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="DateCreate" ColumnName="DateCreate" />
+                <ScalarProperty Name="GhiChu" ColumnName="GhiChu" />
+                <ScalarProperty Name="ID_GiaiThuong" ColumnName="ID_GiaiThuong" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TrungGiai13012024234939">
+            <EntityTypeMapping TypeName="QuaySoModel.TrungGiai13012024234939">
+              <MappingFragment StoreEntitySet="TrungGiai13012024234939">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="DateCreate" ColumnName="DateCreate" />
+                <ScalarProperty Name="GhiChu" ColumnName="GhiChu" />
+                <ScalarProperty Name="ID_GiaiThuong" ColumnName="ID_GiaiThuong" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TrungGiai13012024235917">
+            <EntityTypeMapping TypeName="QuaySoModel.TrungGiai13012024235917">
+              <MappingFragment StoreEntitySet="TrungGiai13012024235917">
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="DateCreate" ColumnName="DateCreate" />
                 <ScalarProperty Name="GhiChu" ColumnName="GhiChu" />

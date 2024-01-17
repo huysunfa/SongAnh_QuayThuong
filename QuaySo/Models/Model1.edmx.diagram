@@ -9,6 +9,9 @@
         <EntityTypeShape EntityType="QuaySoModel.NGUOITRUNGGIAI" Width="1.5" PointX="2.75" PointY="0.75" />
         <EntityTypeShape EntityType="QuaySoModel.Staff" Width="1.5" PointX="2.75" PointY="3.75" />
         <EntityTypeShape EntityType="QuaySoModel.TrungGiai" Width="1.5" PointX="4.75" PointY="0.75" />
+        <EntityTypeShape EntityType="QuaySoModel.TrungGiai13012024233837" Width="1.5" PointX="4.75" PointY="3.75" />
+        <EntityTypeShape EntityType="QuaySoModel.TrungGiai13012024234939" Width="1.5" PointX="6.75" PointY="0.75" />
+        <EntityTypeShape EntityType="QuaySoModel.TrungGiai13012024235917" Width="1.5" PointX="0.75" PointY="6.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

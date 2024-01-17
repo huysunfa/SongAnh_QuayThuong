@@ -29,5 +29,8 @@ namespace QuaySo.Models
         public virtual DbSet<NGUOITRUNGGIAI> NGUOITRUNGGIAIs { get; set; }
         public virtual DbSet<Staff> Staffs { get; set; }
         public virtual DbSet<TrungGiai> TrungGiais { get; set; }
+        public virtual DbSet<TrungGiai13012024233837> TrungGiai13012024233837 { get; set; }
+        public virtual DbSet<TrungGiai13012024234939> TrungGiai13012024234939 { get; set; }
+        public virtual DbSet<TrungGiai13012024235917> TrungGiai13012024235917 { get; set; }
     }
 }
